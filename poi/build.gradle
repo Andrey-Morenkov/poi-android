@@ -1,12 +1,12 @@
 apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'java' // Needed for shadow to work
-apply plugin: 'maven-publish'
 assemble.dependsOn shadowJar
 
 dependencies {
     implementation "org.apache.poi:poi-ooxml:$poiVersion"
     implementation 'org.apache.xmlbeans:xmlbeans:3.1.0'
     implementation 'com.fasterxml:aalto-xml:1.2.2'
+	implementation "org.apache.poi:ooxml-schemas:1.3"
 }
 
 shadowJar {
@@ -35,10 +35,10 @@ shadowJar {
     exclude 'META-INF/maven/**'
 
     // these are only needed when handling Visio files, remove it if you would like to use Visio support
-//    dependencies {
-//        exclude(dependency('com.github.virtuald:curvesapi'))
-//        exclude(dependency('commons-codec:commons-codec'))
-//    }
+    dependencies {
+        exclude(dependency('com.github.virtuald:curvesapi'))
+        exclude(dependency('commons-codec:commons-codec'))
+    }
 
     // Relocate javax dependencies so Android does not choke
     relocate 'javax.xml.namespace', 'org.apache.poi.javax.xml.namespace'
@@ -48,24 +48,4 @@ shadowJar {
 
 artifacts {
     compile shadowJar
-}
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            groupId 'com.supercilex.poiandroid'
-            artifactId 'poi'
-            version poiVersion
-
-            artifact file("$buildDir/libs/poi-all.jar")
-
-            pom.withXml {
-                asNode().with {
-                    appendNode('packaging', 'jar')
-                    appendNode('name', "POI Android")
-                    appendNode('description', 'Apache POI for Android')
-                }
-            }
-        }
-    }
 }
