@@ -5,24 +5,24 @@ assemble.dependsOn shadowJar
 dependencies {
     implementation "org.apache.poi:poi-ooxml:$poiVersion"
     implementation 'org.apache.xmlbeans:xmlbeans:3.1.0'
-    implementation 'com.fasterxml:aalto-xml:1.2.2'
+    implementation 'com.fasterxml:aalto-xml:1.1.0'
 	implementation "org.apache.poi:ooxml-schemas:1.3"
 }
 
 shadowJar {
     archiveName 'poi-all.jar'
 
-    exclude 'schemaorg_apache_xmlbeans/attribute/**'
-    exclude 'schemaorg_apache_xmlbeans/attributegroup/**'
-    exclude 'schemaorg_apache_xmlbeans/element/**'
-    exclude 'schemaorg_apache_xmlbeans/identityconstraint/**'
-    exclude 'schemaorg_apache_xmlbeans/javaname/**'
-    exclude 'schemaorg_apache_xmlbeans/modelgroup/**'
-    exclude 'schemaorg_apache_xmlbeans/namespace/**'
-    exclude 'schemaorg_apache_xmlbeans/src/**'
-    exclude 'schemaorg_apache_xmlbeans/system/s8*/**'
-    exclude 'schemaorg_apache_xmlbeans/system/sXML*/**'
-    exclude 'schemaorg_apache_xmlbeans/type/**'
+    //exclude 'schemaorg_apache_xmlbeans/attribute/**'
+    //exclude 'schemaorg_apache_xmlbeans/attributegroup/**'
+    //exclude 'schemaorg_apache_xmlbeans/element/**'
+    //exclude 'schemaorg_apache_xmlbeans/identityconstraint/**'
+    //exclude 'schemaorg_apache_xmlbeans/javaname/**'
+    //exclude 'schemaorg_apache_xmlbeans/modelgroup/**'
+    //exclude 'schemaorg_apache_xmlbeans/namespace/**'
+    //exclude 'schemaorg_apache_xmlbeans/src/**'
+    //exclude 'schemaorg_apache_xmlbeans/system/s8*/**'
+    //exclude 'schemaorg_apache_xmlbeans/system/sXML*/**'
+    //exclude 'schemaorg_apache_xmlbeans/type/**'
 
     exclude 'repackage/**'
 
